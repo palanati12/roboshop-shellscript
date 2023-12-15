@@ -27,7 +27,7 @@ else
     echo -e "$G You are the root user $N"  
 fi
 
-cp mongolink  /etc/yum.repos.d/mongolink &>> $LOGFILE
+cp mylink.repo  /etc/yum.repos.d/mylink.repo &>> $LOGFILE
 
 dnf install mongodb-org -y 
 
