@@ -27,4 +27,25 @@ else
     echo -e "$G You are the root user $N"  
 fi
 
-cp mongolink  /etc/yum.repos.d/mongolink
+cp mongolink  /etc/yum.repos.d/mongolink >> &LOGFILE
+
+dnf install mongodb-org -y 
+
+VALIDATE $? "installing mongodb"
+
+systemctl enable mongod >> &LOGFILE
+
+VALIDATE $? "enabling mongodb"
+
+systemctl start mongod
+
+VALIDATE $? "started mongodb"
+
+sed -i "s/127.0.0.1/0.0.0.0/   /etc/mongod.conf" >> &LOGFILE
+
+VALIDATE $? "started processing the config"
+
+systemctl restart mongod >> &LOGFILE
+
+VALIDATE $? "Restarting mongodb"
+
