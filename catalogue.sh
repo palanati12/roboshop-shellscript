@@ -12,6 +12,8 @@ TIMESTAMP=$(date +%F-%H-%M-%S)
 
 LOGFILE="/tmp/$0-$TIMESTAMP.log"
 
+echo "script stareted executing at $TIMESTAMP" &>> $LOGFILE
+
 VALIDATE(){
 if [ $1 -ne 0 ]
 then 
@@ -53,7 +55,7 @@ useradd roboshop &>> $LOGFILE
 
 VALIDATE  $? "validating the id"
 
-mkdir /app  &>> $LOGFILE
+mkdir -p /app  &>> $LOGFILE
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
 
@@ -65,7 +67,7 @@ cd /app
 
 npm install 
 
-cp /home/centos/roboshop-shellscript/catalogue.service  /etc/systemd/system/catalogue.service
+cp /home/centos/roboshop-shellscript/catalogue.service  /etc/systemd/system/catalogue.service &>> $LOGFILE
 
 VALIDATE  $? "coping the catalogue service data"
 
