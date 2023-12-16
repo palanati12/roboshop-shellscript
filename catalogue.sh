@@ -51,10 +51,6 @@ then
 else
     echo -e "id creation already exists $Y skipping $N"
 
-useradd roboshop &>> $LOGFILE
-
-VALIDATE  $? "validating the id"
-
 mkdir -p /app  &>> $LOGFILE
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
