@@ -42,7 +42,7 @@ dnf install nodejs -y  &>> $LOGFILE
 
 VALIDATE $? "installing nodejs"
 
-d roboshop
+id roboshop
 if [ $? -ne 0 ]
 then 
     adduser roboshop
@@ -79,7 +79,7 @@ systemctl start user
 
 VALIDATE $? "starting the user"
 
-cp /home/centos/roboshop-shellscript/mylink.repo   /etc/yum.repos.d/mongo.repo/mylink.repo
+cp /home/centos/roboshop-shellscript/mylink.repo   /etc/yum.repos.d/mylink.repo
 
 dnf install mongodb-org-shell -y &>> $LOGFILE
 
