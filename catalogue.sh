@@ -6,7 +6,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-MONGO_HOST =mongodb.praveenapp.online
+MONGO_HOST=mongodb.praveenapp.online
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 
@@ -50,6 +50,7 @@ then
     VALIDATE $? "roboshop user creation"
 else
     echo -e "id creation already exists $Y skipping $N"
+fi
 
 mkdir -p /app  &>> $LOGFILE
 
