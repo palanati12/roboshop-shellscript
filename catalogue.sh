@@ -80,7 +80,7 @@ systemctl start catalogue  &>> $LOGFILE
 
 VALIDATE $? "starting the cataloge service"
 
-cp /home/centos/robosop-shellscript/mylink.repo   /etc/yum.repos.d/mylink.repo   &>> $LOGFILE
+cp /home/centos/roboshop-shellscript/mylink.repo   /etc/yum.repos.d/mylink.repo   &>> $LOGFILE
 
 VALIDATE $?  " coping the mongodata repo to catalgue"
 
