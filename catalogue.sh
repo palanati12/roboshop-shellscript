@@ -6,7 +6,7 @@ G="\e[32m"
 Y="\e[33m"
 N="\e[0m"
 
-MONGO_HOST ="mongodb.praveenapp.online"
+MONGO_HOST =mongodb.praveenapp.online
 
 TIMESTAMP=$(date +%F-%H-%M-%S)
 
@@ -42,17 +42,18 @@ dnf install nodejs -y  &>> $LOGFILE
 VALIDATE  $? "installing nodejs"
 
 id roboshop
-if (id -ne 0)
+if ( $? -ne 0)
 then 
-    echo "create the id  roboshop"
+    useradd roboshop
+    VALIDATE $? "roboshop user creation"
 else
-    echo "id creation was completed"
+    echo -e "id creation already exists $Y skipping $N"
 
 useradd roboshop &>> $LOGFILE
 
-VALIDATE  $? "validating id"
+VALIDATE  $? "validating the id"
 
-mkdir /app  &>> &LOGFILE
+mkdir /app  &>> $LOGFILE
 
 curl -o /tmp/catalogue.zip https://roboshop-builds.s3.amazonaws.com/catalogue.zip
 
